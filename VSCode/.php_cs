@@ -5,16 +5,18 @@ const INDENT = "    ";
 const LINE_ENDING = "\n";
 // 挙動に影響を与える変更は無効にする
 const IS_RISKY = false;
-//
+// ルールを追加する
 const RULES = array(
     // PRS2を標準にする
     '@PSR2' => true,
+    // Docの始まりに必ず*を付ける
     'align_multiline_comment' => true,
     // 二項演算子のスペース
     'binary_operator_spaces' => array(
         'default' => 'single_space',
         'operators' => array(
-            '=' => null // "=&"の二項演算子を正確に修正してくれないので暫定対応
+            // "=&"の二項演算子を正確に修正してくれないので暫定対応
+            '=' => null
         )
     ),
     // array()内のカンマの後に空白を入れる
@@ -37,14 +39,38 @@ const RULES = array(
     'method_argument_space' => array(
         'on_multiline' => 'ensure_fully_multiline'
     ),
+    // 配列の改行にインデントを付ける
     'array_indentation' => true,
     // 空白を除去する
     'no_whitespace_in_blank_line' => true,
     // インデント開始位置を揃える
     'phpdoc_indent' => true,
-    // 縦線揃えない
-
-
+    // declareの=前後にスペースを入れない
+    'declare_equal_normalize' => true,
+    // タイプヒンティングの後にスペースを入れる
+    'function_typehint_space' => true,
+    // キャストの型宣言は小文字
+    'lowercase_cast' => true,
+    // オープンタグの行には何も書かない
+    'linebreak_after_opening_tag' => true,
+    // メソッドチェーンのインデントを整える
+    'method_chaining_indentation' => true,
+    // セミコロンだけの改行を許容しない
+    'multiline_whitespace_before_semicolons' => true,
+    // セミコロン前の空白を削除
+    'no_singleline_whitespace_before_semicolons' => true,
+    // ネームスペース定義前の空白を削除
+    'no_leading_namespace_whitespace' => true,
+    // []の内側のスペースを削除
+    'no_spaces_around_offset' => array('inside'),
+    // ->前後のスペースを削除
+    'object_operator_without_whitespace' => true,
+    // PHPDocを左揃えにする
+    'phpdoc_align' => array(
+        'align' => 'left',
+    ),
+    // 三項演算子のスペースを調整する
+    'ternary_operator_spaces' => true,
 
     /** サンプルなので他のオプションも残しておく */
     // 'unary_operator_spaces' => true,
@@ -52,7 +78,6 @@ const RULES = array(
     // 'array_syntax' => array('syntax' => 'short'),
     // 'combine_consecutive_unsets' => true,
     // 'method_separation' => false,
-    // 'no_multiline_whitespace_before_semicolons' => true,
     // 'single_quote' => true,
     // 'blank_line_after_opening_tag' => true,
     // 'blank_line_before_return' => true,
@@ -63,11 +88,8 @@ const RULES = array(
     //     'space' => 'single'
     // ),
     // 'class_definition' => array('singleLine' => true),
-    //     'declare_equal_normalize' => true,
-    //     'function_typehint_space' => true,
-    //     'hash_to_slash_comment' => true,
-    //     'include' => true,
-    //     'lowercase_cast' => true,
+    // 'hash_to_slash_comment' => true,
+    // 'include' => true,
     // 'native_function_casing' => true,
     // 'new_with_braces' => true,
     // 'no_blank_lines_after_class_opening' => true,
@@ -75,31 +97,16 @@ const RULES = array(
     // 'no_empty_comment' => true,
     // 'no_empty_phpdoc' => true,
     // 'no_empty_statement' => true,
-    //     'no_extra_consecutive_blank_lines' => array(
-    //             'curly_brace_block',
-    //             'extra',
-    //             'parenthesis_brace_block',
-    //             'square_brace_block',
-    //             'throw',
-    //             'use',
-    //     ),
     // 'no_leading_import_slash' => true,
-    // 'no_leading_namespace_whitespace' => true,
     // 'no_mixed_echo_print' => array('use' => 'echo'),
-    //     'no_multiline_whitespace_around_double_arrow' => true,
+    // 'no_multiline_whitespace_around_double_arrow' => true,
     // 'no_short_bool_cast' => true,
-    // 'no_singleline_whitespace_before_semicolons' => true,
-    //     'no_spaces_around_offset' => true,
     // 'no_trailing_comma_in_list_call' => true,
     // 'no_unneeded_control_parentheses' => true,
     // 'no_unused_imports' => true,
-    //     'no_whitespace_in_blank_line' => true,
     // 'normalize_index_brace' => true,
-    //     'object_operator_without_whitespace' => true,
     // 'php_unit_fqcn_annotation' => true,
-    // 'phpdoc_align' => true,
     // 'phpdoc_annotation_without_dot' => true,
-    // 'phpdoc_indent' => true,
     // 'phpdoc_inline_tag' => true,
     // 'phpdoc_no_access' => true,
     // 'phpdoc_no_alias_tag' => true,
@@ -119,15 +126,11 @@ const RULES = array(
     // 'return_type_declaration' => true,
     // 'self_accessor' => true,
     // 'short_scalar_cast' => true,
-    //     'single_blank_line_before_namespace' => true,
+    // 'single_blank_line_before_namespace' => true,
     // 'single_class_element_per_statement' => true,
     // 'space_after_semicolon' => true,
     // 'standardize_not_equals' => true,
-    //     'ternary_operator_spaces' => true,
     // 'trailing_comma_in_multiline_array' => true,
-    // 'trim_array_spaces' => false,
-
-
     // 'function_declaration' => [
     //     'closure_function_spacing' => 'one',
     // ],
