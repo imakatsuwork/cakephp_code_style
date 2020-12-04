@@ -2,7 +2,9 @@
 
 // インデントはスペース4つ
 const INDENT = "    ";
+
 const LINE_ENDING = "\n";
+
 // 挙動に影響を与える変更は無効にする
 const IS_RISKY = false;
 // ルールを追加する
@@ -13,9 +15,10 @@ const RULES = array(
     'align_multiline_comment' => true,
     // 二項演算子のスペース
     'binary_operator_spaces' => array(
-        'default' => 'single_space',
+        // 本来であれば'align_single_space_minimal'がふさわしい
+        'default' => 'align_single_space',
         'operators' => array(
-            // "=&"の二項演算子を正確に修正してくれないので暫定対応
+            // FIXME: "=&"の二項演算子を正確に修正してくれないので暫定対応
             '=' => null
         )
     ),
@@ -43,7 +46,7 @@ const RULES = array(
     'array_indentation' => true,
     // 空白を除去する
     'no_whitespace_in_blank_line' => true,
-    // インデント開始位置を揃える
+    // PHPDocのインデント開始位置を揃える
     'phpdoc_indent' => true,
     // declareの=前後にスペースを入れない
     'declare_equal_normalize' => true,
@@ -67,10 +70,19 @@ const RULES = array(
     'object_operator_without_whitespace' => true,
     // PHPDocを左揃えにする
     'phpdoc_align' => array(
-        'align' => 'left',
+        'align' => 'vertical',
+        'tags' => array(
+            'param'
+        )
     ),
     // 三項演算子のスペースを調整する
     'ternary_operator_spaces' => true,
+    // switch分の不要なスペースを除去する
+    'switch_case_space' => true,
+    // アクセッサを可能な場合、protectedからprivateに変更する
+    'protected_to_private' => false,
+    // 修飾子を自動補完・ソートする
+    'visibility_required' => false,
 
     /** サンプルなので他のオプションも残しておく */
     // 'unary_operator_spaces' => true,
